@@ -16,4 +16,9 @@ public class MainActivity extends AppCompatActivity {
 
         Util.otvoriFragmentKaoReplace(this,R.id.mjestoFragment, PosiljkaAdd1Fragment.newInstance());
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

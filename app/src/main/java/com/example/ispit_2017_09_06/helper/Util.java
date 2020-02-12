@@ -17,6 +17,7 @@ public class Util {
         final FragmentManager fm = (activity).getFragmentManager();
         final FragmentTransaction fragmentTransaction = fm.beginTransaction();
         fragmentTransaction.replace(id, fragment);
+        fragmentTransaction.addToBackStack(fragment.getClass().getName());
         fragmentTransaction.commit();
     }
 

@@ -44,6 +44,7 @@ public class PosiljkaAdd2Fragment extends Fragment {
     private EditText iznos;
     private Switch switchic;
     private Button zavrsiBtn;
+    private Button nazadBtn;
 
 
     public PosiljkaAdd2Fragment() {
@@ -88,11 +89,18 @@ public class PosiljkaAdd2Fragment extends Fragment {
         iznos = view.findViewById(R.id.iznosInput);
         switchic = view.findViewById(R.id.switchic);
         zavrsiBtn = view.findViewById(R.id.zavrsiBtn);
+        nazadBtn = view.findViewById(R.id.nazadBtn);
 
         zavrsiBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 zavrsi();
+            }
+        });
+        nazadBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().onBackPressed();
             }
         });
 
