@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name='ispit_2017-09-06'

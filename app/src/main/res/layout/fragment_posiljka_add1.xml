@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".fragments.PosiljkaAdd1Fragment">
+
+   <TextView
+       android:text="Primaoc ime"
+       android:id="@+id/primaocIme"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"/>
+
+    <EditText
+        android:layout_below="@+id/primaocIme"
+        android:id="@+id/primaocImeInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <TextView
+        android:layout_below="@+id/primaocImeInput"
+        android:text="Primaoc adresa"
+        android:id="@+id/primaocAdresa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:layout_below="@+id/primaocAdresa"
+        android:id="@+id/primaocAdresaInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:text="Promjeni posiljaoca"
+        android:layout_below="@+id/primaocAdresaInput"
+        android:id="@+id/promjeniPrimaocaBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+
+
+
+
+
+
+
+    <TextView
+        android:layout_below="@+id/promjeniPrimaocaBtn"
+        android:text="Posiljaoc ime"
+        android:id="@+id/posiljaocIme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:layout_below="@+id/posiljaocIme"
+        android:id="@+id/posiljaocImeInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <TextView
+        android:layout_below="@+id/posiljaocImeInput"
+        android:text="Posiljaoc adresa"
+        android:id="@+id/posiljaocAdresa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:layout_below="@+id/posiljaocAdresa"
+        android:id="@+id/posiljaocAdresaInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:text="Promjeni posiljaoca"
+        android:layout_below="@+id/posiljaocAdresaInput"
+        android:id="@+id/promjeniPosiljaocaBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:text="Dalje"
+        android:layout_below="@+id/promjeniPosiljaocaBtn"
+        android:id="@+id/daljeBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+
+</RelativeLayout>

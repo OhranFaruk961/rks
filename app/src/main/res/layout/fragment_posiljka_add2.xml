@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".fragments.PosiljkaAdd2Fragment">
+
+
+    <TextView
+        android:text="Masa"
+        android:id="@+id/masa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:layout_below="@+id/masa"
+        android:id="@+id/masaInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <TextView
+        android:layout_below="@+id/masaInput"
+        android:text="Napomena"
+        android:id="@+id/napomena"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:layout_below="@+id/napomena"
+        android:id="@+id/napomenaInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Switch
+        android:id="@+id/switchic"
+        android:layout_below="@+id/napomenaInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_below="@+id/napomenaInput"
+        android:text="Plati pouzecem"
+        android:layout_toRightOf="@+id/switchic"
+        android:id="@+id/platiPouzecem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:text="Iznos"
+        android:layout_below="@+id/switchic"
+        android:id="@+id/iznos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:layout_below="@+id/iznos"
+        android:id="@+id/iznosInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:text="Zavrsi"
+        android:layout_below="@+id/iznosInput"
+        android:id="@+id/zavrsiBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <Button
+        android:text="Nazad"
+        android:layout_below="@+id/zavrsiBtn"
+        android:id="@+id/nazadBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+</RelativeLayout>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.PretragaDialogFragment">
+
+
+    <EditText
+        android:layout_toLeftOf="@+id/pretragaBtn"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/pretragaInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:text="..."
+        android:layout_alignParentRight="true"
+        android:id="@+id/pretragaBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <ListView
+        android:layout_below="@+id/pretragaBtn"
+        android:id="@+id/pretragaLista"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"/>
+    <Button
+        android:text="Novi korisnik"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/noviKorisnikBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

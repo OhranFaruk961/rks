@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".fragments.NoviKorisnikDialogFragment">
+
+
+    <TextView
+        android:text="Korisnik ime "
+        android:id="@+id/korisnikIme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:layout_below="@+id/korisnikIme"
+        android:id="@+id/korisnikImeInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_below="@+id/korisnikImeInput"
+        android:text="Korisnik prezime"
+        android:id="@+id/korisnikPrezime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:layout_below="@+id/korisnikPrezime"
+        android:id="@+id/korisnikPrezimeInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <TextView
+        android:layout_below="@+id/korisnikPrezimeInput"
+        android:text="Korisnik Adresa"
+        android:id="@+id/korisnikAdresa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:layout_below="@+id/korisnikAdresa"
+        android:id="@+id/korisnikAdresaInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:text="Snimi"
+        android:layout_below="@+id/korisnikAdresaInput"
+        android:id="@+id/snimiKorisnikaBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+</RelativeLayout>
