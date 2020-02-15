@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Util.otvoriFragmentKaoReplace(this,R.id.mjestoFragment, PosiljkaAdd1Fragment.newInstance());
+        Util.otvoriFragmentKaoReplace(this,R.id.mjestoFragment, null, PosiljkaAdd1Fragment.newInstance(new Bundle()));
     }
 
     @Override

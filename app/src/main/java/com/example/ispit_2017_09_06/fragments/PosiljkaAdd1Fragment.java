@@ -24,6 +24,7 @@ import com.example.ispit_2017_09_06.podaci.KorisnikVM;
 public class PosiljkaAdd1Fragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private Bundle fragment_arg;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -53,10 +54,10 @@ public class PosiljkaAdd1Fragment extends Fragment {
      * @return A new instance of fragment PosiljkaAdd1Fragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static PosiljkaAdd1Fragment newInstance() {
+    public static PosiljkaAdd1Fragment newInstance(Bundle bundle) {
         PosiljkaAdd1Fragment fragment = new PosiljkaAdd1Fragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
+        fragment.fragment_arg = bundle;
+        fragment.setArguments(fragment.fragment_arg);
         return fragment;
     }
 
@@ -81,6 +82,7 @@ public class PosiljkaAdd1Fragment extends Fragment {
         promjeniPrimaocaBtn = view.findViewById(R.id.promjeniPrimaocaBtn);
         promjeniPosiljaocaBtn = view.findViewById(R.id.promjeniPosiljaocaBtn);
         daljeBtn = view.findViewById(R.id.daljeBtn);
+        setInitState(getArguments());
 
         promjeniPrimaocaBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,9 +105,23 @@ public class PosiljkaAdd1Fragment extends Fragment {
 
         return view;
     }
+    private void setInitState(Bundle bundle) {
+        if (bundle == null) return;
+
+        String mPrimaocIme = bundle.getString("primaocIme");
+        String mPrimaocAdresa = bundle.getString("primaocAdresa");
+        String mPosiljaocIme = bundle.getString("posiljaocIme");
+        String mPosiljaocAdresa = bundle.getString("posiljaocAdresa");
+
+        primaocIme.setText(mPrimaocIme);
+        primaocAdresa.setText(mPrimaocAdresa);
+        posiljaocIme.setText(mPosiljaocIme);
+        posiljaocAdresa.setText(mPosiljaocAdresa);
+    }
 
     private void dalje() {
-        Util.otvoriFragmentKaoReplace(getActivity(),R.id.mjestoFragment,PosiljkaAdd2Fragment.newInstance(primaoc,posiljaoc));
+        onSaveInstanceState();
+        Util.otvoriFragmentKaoReplace(getActivity(),R.id.mjestoFragment,this, PosiljkaAdd2Fragment.newInstance(fragment_arg, primaoc,posiljaoc));
     }
 
     private void promjeniPosiljaoca() {
@@ -134,5 +150,12 @@ public class PosiljkaAdd1Fragment extends Fragment {
         Util.otvoriFragmentKaoDijalog(getActivity(),pretragaDialogFragment);
     }
 
+    public void onSaveInstanceState() {
 
+        fragment_arg.putString("primaocIme", primaocIme.getText().toString());
+        fragment_arg.putString("primaocAdresa", primaocAdresa.getText().toString());
+        fragment_arg.putString("posiljaocIme", posiljaocIme.getText().toString());
+        fragment_arg.putString("posiljaocAdresa", posiljaocAdresa.getText().toString());
+        setArguments(fragment_arg);
+    }
 }

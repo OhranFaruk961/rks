@@ -12,12 +12,17 @@ import androidx.fragment.app.FragmentActivity;
 
 public class Util {
 
-    public static void otvoriFragmentKaoReplace(Activity activity, int id, Fragment fragment)
-    {
+    public static void otvoriFragmentKaoReplace(Activity activity, int id, Fragment current_fragment, Fragment new_fragment) {
         final FragmentManager fm = (activity).getFragmentManager();
         final FragmentTransaction fragmentTransaction = fm.beginTransaction();
-        fragmentTransaction.replace(id, fragment);
-        fragmentTransaction.addToBackStack(fragment.getClass().getName());
+        if (new_fragment.isAdded()) {
+            fragmentTransaction.show(new_fragment);
+        } else
+            fragmentTransaction.add(id, new_fragment);
+        if (current_fragment != null) {
+            fragmentTransaction.hide(current_fragment);
+            fragmentTransaction.addToBackStack(current_fragment.getClass().getName());
+        }
         fragmentTransaction.commit();
     }
 

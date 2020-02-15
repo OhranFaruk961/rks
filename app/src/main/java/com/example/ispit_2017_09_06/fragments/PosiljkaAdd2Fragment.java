@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import android.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,7 @@ public class PosiljkaAdd2Fragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private String TAG = "PosiljkaAdd2Fragment";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -45,6 +47,7 @@ public class PosiljkaAdd2Fragment extends Fragment {
     private Switch switchic;
     private Button zavrsiBtn;
     private Button nazadBtn;
+    private Bundle fragment_arg;
 
 
     public PosiljkaAdd2Fragment() {
@@ -59,12 +62,12 @@ public class PosiljkaAdd2Fragment extends Fragment {
      * @return A new instance of fragment PosiljkaAdd2Fragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static PosiljkaAdd2Fragment newInstance(KorisnikVM primaoc, KorisnikVM posiljaoc) {
+    public static PosiljkaAdd2Fragment newInstance(Bundle args, KorisnikVM primaoc, KorisnikVM posiljaoc) {
         PosiljkaAdd2Fragment fragment = new PosiljkaAdd2Fragment();
-        Bundle args = new Bundle();
-        args.putSerializable("tri",primaoc);
-        args.putSerializable("cetiri",posiljaoc);
-        fragment.setArguments(args);
+        fragment.fragment_arg = args;
+        fragment.fragment_arg.putSerializable("tri",primaoc);
+        fragment.fragment_arg.putSerializable("cetiri",posiljaoc);
+        fragment.setArguments(fragment.fragment_arg);
         return fragment;
     }
 
@@ -91,6 +94,7 @@ public class PosiljkaAdd2Fragment extends Fragment {
         zavrsiBtn = view.findViewById(R.id.zavrsiBtn);
         nazadBtn = view.findViewById(R.id.nazadBtn);
 
+        setInitState(getArguments());
         zavrsiBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,11 +104,25 @@ public class PosiljkaAdd2Fragment extends Fragment {
         nazadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().onBackPressed();
+                saveState();
+                Util.otvoriFragmentKaoReplace(getActivity(),R.id.mjestoFragment,PosiljkaAdd2Fragment.this, PosiljkaAdd1Fragment.newInstance(fragment_arg));
             }
         });
 
         return view;
+    }
+
+    private void setInitState(Bundle bundle) {
+        if (bundle == null) return;
+        String mMasa = bundle.getString("masa");
+        String mNapomena = bundle.getString("napomena");
+        String mIznos = bundle.getString("iznos");
+        boolean isSelected = bundle.getBoolean("naplatiPouzecem", false);
+
+        masa.setText(mMasa);
+        napomena.setText(mNapomena);
+        iznos.setText(mIznos);
+        switchic.setChecked(isSelected);
     }
 
     private void zavrsi() {
@@ -127,7 +145,7 @@ public class PosiljkaAdd2Fragment extends Fragment {
                 broj =  Storage.getPosiljkeAll().size();
                 Toast.makeText(getActivity(),"Posiljka uspjesno snimljena",Toast.LENGTH_LONG).show();
                 dialog.dismiss();
-                Util.otvoriFragmentKaoReplace(getActivity(),R.id.mjestoFragment,PosiljkaAdd1Fragment.newInstance());
+                Util.otvoriFragmentKaoReplace(getActivity(),R.id.mjestoFragment,PosiljkaAdd2Fragment.this, PosiljkaAdd1Fragment.newInstance(new Bundle()));
             }
         });
 
@@ -136,9 +154,19 @@ public class PosiljkaAdd2Fragment extends Fragment {
             public void onClick(DialogInterface dialog, int which) {
                 Toast.makeText(getActivity(),"Posiljka nije  snimljena",Toast.LENGTH_LONG).show();
                 dialog.dismiss();
-                Util.otvoriFragmentKaoReplace(getActivity(),R.id.mjestoFragment,PosiljkaAdd2Fragment.newInstance(primaoc,posiljaoc));
+                Util.otvoriFragmentKaoReplace(getActivity(),R.id.mjestoFragment,PosiljkaAdd2Fragment.this, PosiljkaAdd2Fragment.newInstance(new Bundle(), primaoc,posiljaoc));
             }
         });
         alert.show();
+    }
+
+
+    public void saveState() {
+        fragment_arg.putString("masa", masa.getText().toString());
+        fragment_arg.putString("napomena", napomena.getText().toString());
+        fragment_arg.putString("iznos", iznos.getText().toString());
+        fragment_arg.putBoolean("naplatiPouzecem", switchic.isChecked());
+        setArguments(fragment_arg);
+
     }
 }
